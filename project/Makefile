@@ -6,7 +6,7 @@
 #    By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/08 09:55:09 by isilva-t          #+#    #+#              #
-#    Updated: 2024/06/20 15:06:53 by isilva-t         ###   ########.fr        #
+#    Updated: 2024/06/20 16:42:13 by isilva-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = proj/push_swap.c \
-	   proj/stack_util.c \
-		utils/ft_split.c \
+	   proj/stack_utils.c \
+	   proj/stack_init.c \
+		  utils/ft_split.c \
 		  utils/ft_strlen.c \
 		  utils/ft_substr.c \
 		  utils/ft_strdup.c

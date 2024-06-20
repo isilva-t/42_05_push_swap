@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:54:49 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/20 15:11:41 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:41:37 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,23 @@
 # include <limits.h>
 # include <stdio.h> //DELETE THIS BEFORE SUBMIT!!!!!!
 
-typedef struct s_stack_node
+typedef struct s_list
 {
 	int	nbr;
 	int	index;
 	int	push_cost;
 	int	above_median;
 	int	cheapest;
-	struct s_stack_node *target_node;
-	struct s_stack_node *next;
-	struct s_stack_node *prev;
-}	t_stack_node;
+	struct s_list *target_node;
+	struct s_list *next;
+	struct s_list *prev;
+}	t_list;
 
+// stack init
+void	init_stack_a(t_list **a, char	**array);
 
-void	init_stack_a(t_stack_node **a, char	**array);
-
+// stack utils
+t_list	*find_last_node(t_list *stack);
 
 
 //utils libft
