@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:54:49 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/20 16:41:37 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/06/21 11:35:45 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+
 # include <stdio.h> //DELETE THIS BEFORE SUBMIT!!!!!!
 
 typedef struct s_list
@@ -35,12 +36,16 @@ void	init_stack_a(t_list **a, char	**array);
 
 // stack utils
 t_list	*find_last_node(t_list *stack);
+int		is_not_sorted(t_list *stack);
 
+// free error
+void	free_stack(t_list *stack);
+void	free_mem(int in_word, char **array);
 
 //utils libft
 int	ft_atoi(const char *nptr);
 //split
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c, int n_words);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   free_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 16:33:04 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/20 16:39:19 by isilva-t         ###   ########.fr       */
+/*   Created: 2024/06/21 11:29:09 by isilva-t          #+#    #+#             */
+/*   Updated: 2024/06/21 11:35:27 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*find_last_node(t_list *stack)
+void	free_stack(t_list *stack)
 {
-	if (!stack)
-		return NULL;
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
-}
+	t_list	*tmp;
+	t_list	*current;
 
-int	is_not_sorted(t_list *stack)
-{
-	if (!stack->next && !stack)
-		return (-1);
-	while(stack->next)
+	if (!stack)
+		return ;
+	current = stack;
+
+	while (current)
 	{
-		stack = stack->next;
-		if (stack->nbr < stack->prev->nbr)
-			return (1);
+		tmp = current;
+		current = current->next;
+		free(tmp);
 	}
-	return (0);
+	stack = NULL;
 }

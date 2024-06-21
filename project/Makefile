@@ -16,6 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = proj/push_swap.c \
 	   proj/stack_utils.c \
 	   proj/stack_init.c \
+	   proj/free_error.c \
 		  utils/ft_split.c \
 		  utils/ft_strlen.c \
 		  utils/ft_substr.c \

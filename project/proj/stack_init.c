@@ -74,13 +74,13 @@ static int	have_duplicated(t_list *stack, int n)
 	return (0);
 }
 
-void	init_stack_a(t_list **a, char	**array)
+void	init_stack_a(t_list **a, char **array)
 {
 	int	i;
 	long	n;
 
-printf("ENTROU init_stack_a\n");
-	a = NULL; //FOR TESTING
+printf("___________________________________________ENTROU init_stack_a\n");
+	
 	i = 0;
 	while(array[i])
 	{
@@ -95,10 +95,8 @@ printf("ENTROU init_stack_a\n");
 			write(1, "ErINT\n", 6); //DELETE INT
 			return ;
 		}
-printf("HERE 1\n");
 		if (have_duplicated(*a, n))
 		{
-printf("HERE 2\n");
 			write(1, "ErDUP\n", 6);
 			return ;
 		}

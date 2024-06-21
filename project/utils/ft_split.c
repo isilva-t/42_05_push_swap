@@ -82,12 +82,10 @@ char	**split(char const *s, char c, char **array, int n_words)
 	return (array);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c, int n_words)
 {
-	int		n_words;
 	char	**array;
 
-	n_words = count_words(s, c);
 	if (!s)
 		return (NULL);
 	array = (char **)malloc(sizeof(char *) * (n_words + 1));
