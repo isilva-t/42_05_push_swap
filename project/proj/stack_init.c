@@ -79,8 +79,6 @@ void	init_stack_a(t_list **a, char **array)
 	int	i;
 	long	n;
 
-printf("___________________________________________ENTROU init_stack_a\n");
-	
 	i = 0;
 	while(array[i])
 	{

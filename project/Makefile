@@ -6,7 +6,7 @@
 #    By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/08 09:55:09 by isilva-t          #+#    #+#              #
-#    Updated: 2024/06/20 16:42:13 by isilva-t         ###   ########.fr        #
+#    Updated: 2024/06/24 16:53:11 by isilva-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,15 @@ SRCS = proj/push_swap.c \
 	   proj/stack_utils.c \
 	   proj/stack_init.c \
 	   proj/free_error.c \
+	   proj/com_push.c \
+	   proj/com_swap.c \
 		  utils/ft_split.c \
 		  utils/ft_strlen.c \
 		  utils/ft_substr.c \
-		  utils/ft_strdup.c
+		  utils/ft_strdup.c \
+		  	utils/ft_printf/ft_printf.c \
+			utils/ft_printf/pf_print_ptr.c \
+			utils/ft_printf/pf_put_nbr_base.c
 
 OBJS = ${SRCS:.c=.o}
 
