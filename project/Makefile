@@ -19,6 +19,7 @@ SRCS = proj/push_swap.c \
 	   proj/free_error.c \
 	   proj/com_push.c \
 	   proj/com_swap.c \
+	   proj/com_rotate.c \
 		  utils/ft_split.c \
 		  utils/ft_strlen.c \
 		  utils/ft_substr.c \

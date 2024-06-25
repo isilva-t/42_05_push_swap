@@ -38,7 +38,7 @@ static void print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b)
 		}
 		i++;	
 	}
-	ft_printf("\n\n");
+	ft_printf("\n\n\n");
 }
 
 int	main(int ac, char **av)
@@ -81,11 +81,8 @@ int	main(int ac, char **av)
 
 		print_stack(&a, &b, NULL, NULL);
 
-ft_printf("__________________");
 		sa(&a);
 		print_stack(&a, &b, NULL, NULL);
-
-ft_printf("__________________");
 
 		pa(&a, &b);
 		print_stack(&a, &b, NULL, NULL);
@@ -96,6 +93,14 @@ ft_printf("__________________");
 
 		ss(&a, &b);
 		print_stack(&a, &b, NULL, NULL);
+
+		ra(&a);
+		print_stack(&a, &b, NULL, NULL);
+		rb(&b);
+		print_stack(&a, &b, NULL, NULL);
+		rr(&a, &b);
+		print_stack(&a, &b, NULL, NULL);
+
 
 
 

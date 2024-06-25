@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:54:49 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/24 17:01:55 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:00:45 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	pb(t_list **a, t_list **b);
 void	sa(t_list **stack);
 void	sb(t_list **stack);
 void	ss(t_list **a, t_list **b);
-
+void	ra(t_list **a);
+void	rb(t_list **b);
+void	rr(t_list **a, t_list **b);
 
 // free error
 void	free_stack(t_list *stack);
