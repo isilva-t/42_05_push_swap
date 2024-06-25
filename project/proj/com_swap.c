@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:24:03 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/24 17:12:26 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/06/25 12:28:24 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	swap(t_list **stack)
 	node_to_first = NULL;
 	node_to_second = NULL;
 	third_node = NULL;
-	if (!stack || !(*stack)->next)
+	if (!*stack || !(*stack)->next)
 		return (0);
 	node_to_first = (*stack)->next;
 	node_to_second = *stack;

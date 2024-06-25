@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 14:53:20 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/20 17:00:12 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:49:56 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	have_duplicated(t_list *stack, int n)
 	return (0);
 }
 
-void	init_stack_a(t_list **a, char **array)
+int	init_stack_a(t_list **a, char **array)
 {
 	int	i;
 	long	n;
@@ -84,21 +84,22 @@ void	init_stack_a(t_list **a, char **array)
 	{
 		if (have_syntax_error(array[i]))
 		{
-			write(1, "ErSYN\n", 6); // DELETE SYNTAX
-			return ;
+			ft_printf("Error SYNTAX\n"); // DELETE SYNTAX
+			return (1);
 		}
 		n = atol(array[i]);
 		if (n > INT_MAX || n < INT_MIN)
 		{	
-			write(1, "ErINT\n", 6); //DELETE INT
-			return ;
+			ft_printf("Error OUT_OF_INT\n"); //DELETE INT
+			return (1);
 		}
 		if (have_duplicated(*a, n))
 		{
-			write(1, "ErDUP\n", 6);
-			return ;
+			ft_printf("Error HAVE_DUPLICATED\n"); /// DELETE DUP
+			return (1);
 		}
 		append_node(a, (int)n);
 		i++;
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:54:49 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/25 10:00:45 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:45:34 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_list
 }	t_list;
 
 // stack init
-void	init_stack_a(t_list **a, char	**array);
+int	init_stack_a(t_list **a, char	**array);
 
 // stack utils
 t_list	*find_last_node(t_list *stack);
@@ -48,6 +48,10 @@ void	ss(t_list **a, t_list **b);
 void	ra(t_list **a);
 void	rb(t_list **b);
 void	rr(t_list **a, t_list **b);
+void	rra(t_list **a);
+void	rrb(t_list **b);
+void	rrr(t_list **a, t_list **b);
+
 
 // free error
 void	free_stack(t_list *stack);
