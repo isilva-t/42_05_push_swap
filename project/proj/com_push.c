@@ -16,7 +16,7 @@ static int	push(t_list **src, t_list **dst)
 {
 	t_list	*node_to_push;
 
-	if (!(*src))
+	if (!*src)
 		return (0);
 	node_to_push = *src;
 	*src = (*src)->next;
@@ -25,16 +25,18 @@ static int	push(t_list **src, t_list **dst)
 	node_to_push->prev = NULL;
 	if (!*dst)
 	{
-		*dst = node_to_push;
 		node_to_push->next = NULL;
-	}
-	else
-	{
-		node_to_push->next = *dst;
-		node_to_push->next->prev = node_to_push;
 		*dst = node_to_push;
+		return (1);
 	}
-	return (1);
+	else if (*dst)
+	{
+		(*dst)->prev = node_to_push;
+		node_to_push->next = *dst;
+		*dst = node_to_push;
+		return (1);
+	}
+	return (0);
 }
 
 void	pb(t_list **a, t_list **b)

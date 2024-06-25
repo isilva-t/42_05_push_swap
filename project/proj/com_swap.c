@@ -21,7 +21,7 @@ static int	swap(t_list **stack)
 	node_to_first = NULL;
 	node_to_second = NULL;
 	third_node = NULL;
-	if (!*stack || !(*stack)->next)
+	if (!*stack && !(*stack)->next)
 		return (0);
 	node_to_first = (*stack)->next;
 	node_to_second = *stack;

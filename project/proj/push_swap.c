@@ -36,68 +36,68 @@ static void print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b)
 			ft_printf("     b_  %d", cur_b->nbr);
 			cur_b = cur_b->next;
 		}
-		sleep(1);
+		sleep(0);
 		i++;	
 	}
 	ft_printf("\n\n");
 }
 
-
-static void test_moves(t_list *a, t_list *b, int n_tests)
+static void test_moves(t_list *a, t_list *b, int n_tests, int slt)
 {
-		ft_printf("\n______________TEST_MOVES______________%d\n", n_tests);
-			pb(&a, &b);
-			pb(&a, &b);
-			pb(&a, &b);
-			pb(&a, &b);
-sleep(1);
-		print_stack(&a, &b, NULL, NULL);
-sleep(1);
+	ft_printf("\n______________TEST_MOVES______________%d\n", n_tests);
+	pb(&a, &b);
+	pb(&a, &b);
+	pb(&a, &b);
+				rb(&b);
+	pb(&a, &b);
+	print_stack(&a, &b, NULL, NULL);
+sleep(slt);
+	pa(&a, &b);
+	pa(&a, &b);
+	pa(&a, &b);
+	pa(&a, &b);
+				ra(&a);
+	pa(&a, &b);
+	print_stack(&a, &b, NULL, NULL);
+sleep(slt);
+	pb(&a, &b);
+	pb(&a, &b);
+	print_stack(&a, &b, NULL, NULL);
+sleep(slt);
+	pa(&a, &b);
+	pa(&a, &b);
+							sa(&a);
+							sa(&a);
+											rrr(&a, &b);
+	pa(&a, &b);
+	
+							sa(&a);
+	pa(&a, &b);
 
-		sa(&a);
-		print_stack(&a, &b, NULL, NULL);
-sleep(1);
+	print_stack(&a, &b, NULL, NULL);
+sleep(slt);
+	pb(&a, &b);
+	
+											rra(&a);
+							sa(&a);
+							sa(&a);
+				ra(&a);
+				rb(&b);
+				rr(&a, &b);
 
-		pa(&a, &b);
-		print_stack(&a, &b, NULL, NULL);
-sleep(1);
+	pb(&a, &b);
+	pb(&a, &b);
+											rrb(&b);
+	pb(&a, &b);
+	print_stack(&a, &b, NULL, NULL);
+sleep(slt);
+	pa(&a, &b);
+	pa(&a, &b);
+	print_stack(&a, &b, NULL, NULL);
 
-		sa(&a);
-		sb(&b);
-		print_stack(&a, &b, NULL, NULL);
-sleep(1);
+	free_stack(a);
+	free_stack(b);
 
-		ss(&a, &b);
-		print_stack(&a, &b, NULL, NULL);
-sleep(1);
-/*
-		ra(&a);
-		print_stack(&a, &b, NULL, NULL);
-		rb(&b);
-		print_stack(&a, &b, NULL, NULL);
-		rr(&a, &b);
-		print_stack(&a, &b, NULL, NULL);
-
-		rra(&a);
-		print_stack(&a, &b, NULL, NULL);
-		rrb(&b);
-		print_stack(&a, &b, NULL, NULL);
-		rrr(&a, &b);
-		print_stack(&a, &b, NULL, NULL);
-*/
-	while(n_tests > 0)
-	{
-		ft_printf("NUMBER %d\n", n_tests);
-		--n_tests;
-		sleep(3);
-		test_moves(a, b, -1);
-	}
-	if (n_tests == 0)
-	{
-		ft_printf("FREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n");
-		free_stack(a);
-		free_stack(b);
-	}
 }
 
 
@@ -107,7 +107,9 @@ int	main(int ac, char **av)
 	t_list	*a;
 	t_list	*b;
 	int		have_error;
+	int		slt;
 
+	slt = 0;
 	have_error = 0;
 	a = NULL;
 	b = NULL;
@@ -133,7 +135,7 @@ int	main(int ac, char **av)
 			ft_printf("\nTHERE IS A ERROR MY FRIEND!!!\n");
 
 		print_stack(&a, &b, NULL, NULL);
-		test_moves(a, b, 3);
+		test_moves(a, b, 3, slt);
 }
 
 	if (have_error)
