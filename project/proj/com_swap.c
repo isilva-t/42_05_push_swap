@@ -21,7 +21,9 @@ static int	swap(t_list **stack)
 	node_to_first = NULL;
 	node_to_second = NULL;
 	third_node = NULL;
-	if (!*stack && !(*stack)->next)
+	if (!*stack)
+		return (0);
+	if (!(*stack)->next)
 		return (0);
 	node_to_first = (*stack)->next;
 	node_to_second = *stack;
@@ -40,18 +42,36 @@ static int	swap(t_list **stack)
 
 void	sa(t_list **stack)
 {
-	if (swap(stack))
+	if (!*stack)
+		return (print_err("____NO swap_a\n"));
+	if (!(*stack)->next)
+		return (print_err("____NO swap_a\n"));
+	else if (swap(stack))
 		ft_printf("sa\n");
+	else
+		print_err("____NO swap_b\n");
 }
 
 void	sb(t_list **stack)
 {
-	if (swap(stack))
+	if (!*stack)
+		return (print_err("____NO swap_b\n"));
+	if (!(*stack)->next)
+		return (print_err("____NO swap_b\n"));
+	else if (swap(stack))
 		ft_printf("sb\n");
+	else
+		print_err("____NO swap_b\n");
 }
 
 void	ss(t_list **a, t_list **b)
 {
-	if (swap(a) && swap(b))
+	if (!*a && !*b)
+		return (print_err("____NO swap_both\n"));
+	if (!(*a)->next && ! (*b)->next)
+		return (print_err("____NO swap_both\n"));
+	else if (swap(a) && swap(b))
 		ft_printf("ss\n");
+	else
+		print_err("____NO swap_both\n");
 }

@@ -12,104 +12,16 @@
 
 #include "../push_swap.h"
 
-static void print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b)
-{
-	int	i;
-
-	i = 0;
-	if (*a)
-		cur_a = *a;
-	if (*b)
-		cur_b = *b;
-	while(cur_a || cur_b)
-	{
-		ft_printf("\nnode_%d->nbr", i); 
-		if (cur_a)
-		{
-			ft_printf("     a_  %d", cur_a->nbr);
-			cur_a = cur_a->next;
-		}
-		else
-			ft_printf("          ");
-		if (cur_b)
-		{
-			ft_printf("     b_  %d", cur_b->nbr);
-			cur_b = cur_b->next;
-		}
-		sleep(0);
-		i++;	
-	}
-	ft_printf("\n\n");
-}
-
-static void test_moves(t_list *a, t_list *b, int n_tests, int slt)
-{
-	ft_printf("\n______________TEST_MOVES______________%d\n", n_tests);
-	pb(&a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-				rb(&b);
-	pb(&a, &b);
-	print_stack(&a, &b, NULL, NULL);
-sleep(slt);
-	pa(&a, &b);
-	pa(&a, &b);
-	pa(&a, &b);
-	pa(&a, &b);
-				ra(&a);
-	pa(&a, &b);
-	print_stack(&a, &b, NULL, NULL);
-sleep(slt);
-	pb(&a, &b);
-	pb(&a, &b);
-	print_stack(&a, &b, NULL, NULL);
-sleep(slt);
-	pa(&a, &b);
-	pa(&a, &b);
-							sa(&a);
-							sa(&a);
-											rrr(&a, &b);
-	pa(&a, &b);
-	
-							sa(&a);
-	pa(&a, &b);
-
-	print_stack(&a, &b, NULL, NULL);
-sleep(slt);
-	pb(&a, &b);
-	
-											rra(&a);
-							sa(&a);
-							sa(&a);
-				ra(&a);
-				rb(&b);
-				rr(&a, &b);
-
-	pb(&a, &b);
-	pb(&a, &b);
-											rrb(&b);
-	pb(&a, &b);
-	print_stack(&a, &b, NULL, NULL);
-sleep(slt);
-	pa(&a, &b);
-	pa(&a, &b);
-	print_stack(&a, &b, NULL, NULL);
-
-	free_stack(a);
-	free_stack(b);
-
-}
-
-
 int	main(int ac, char **av)
 {
-	int		n_words;
 	t_list	*a;
 	t_list	*b;
+	int		n_words;
 	int		have_error;
 	int		slt;
+	int		tests;
 
-	slt = 0;
+	slt = 1;
 	have_error = 0;
 	a = NULL;
 	b = NULL;
@@ -132,14 +44,23 @@ int	main(int ac, char **av)
 		else if (is_not_sorted(a) == 0 && a)
 			ft_printf("\nSORTED!!!\n");
 		else if (is_not_sorted(a) == -1 && a)
-			ft_printf("\nTHERE IS A ERROR MY FRIEND!!!\n");
+			ft_printf("\nTHERE IS SOME ANOTHER ERROR MY FRIEND!!!\n");
+	rrr(&a, &b);
+		tests = 1;
+		while (tests-- > 0)
+			test_moves(&a, &b, 0, slt);	
 
-		print_stack(&a, &b, NULL, NULL);
-		test_moves(a, b, 3, slt);
-}
-
-	if (have_error)
-		free_stack(a);
+		//ft_printf("\nTEST free_stack(a) whithout check if exists \"b\"\n\n");
+		//free_stack(&a);
+		while (b)
+			pa(&a, &b);
+		ft_printf("\nfinal result:\n");
+		print_stack(&a, &b, NULL, NULL);		
+		print_rev_stack(&a, &b, NULL, NULL);
+		free_stack(&a);
+	}
+	else if (have_error)
+		free_stack(&a);
 
 	if (ac == 2)
 		free_mem(n_words, av);

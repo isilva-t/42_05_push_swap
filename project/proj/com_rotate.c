@@ -17,7 +17,9 @@ static int	rotate(t_list **stack)
 	t_list	*new_bottom;
 	t_list	*last_node;
 
-	if (!*stack && !(*stack)->next)
+	if (!*stack)
+		return (0);
+	if (!(*stack)->next)
 		return (0);
 	last_node = find_last_node(*stack);
 	new_bottom = *stack;
@@ -29,20 +31,38 @@ static int	rotate(t_list **stack)
 	return (1);
 }
 
-void	ra(t_list **a)
+void	ra(t_list **stack)
 {
-	if (rotate(a))
+	if (!*stack)
+		return (print_err("______NO rotate___a\n"));
+	if (!(*stack)->next)
+		return (print_err("______NO rotate___a\n"));
+	else if (rotate(stack))
 		ft_printf("ra\n");
+	else
+		print_err("______NO rotate___a\n");
 }
 
-void	rb(t_list **b)
+void	rb(t_list **stack)
 {
-	if (rotate(b))
+	if (!*stack)
+		return (print_err("______NO rotate___b\n"));
+	if (!(*stack)->next)
+		return (print_err("______NO rotate___b\n"));
+	else if (rotate(stack))
 		ft_printf("rb\n");
+	else
+		print_err("______NO rotate___b\n");
 }
 
 void	rr(t_list **a, t_list **b)
 {
-	if (rotate(a) && rotate(b))
+	if (!*a || !*b)
+		return (print_err("______NO rotate_both\n"));
+	if (!(*a)->next || !(*b)->next)
+		return (print_err("______NO rotate_both\n"));
+	else if (rotate(a) && rotate(b))
 		ft_printf("rr\n");
+	else
+		return (print_err("______NO rotate_both____WTF?!?!?!?!\n"));
 }

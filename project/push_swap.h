@@ -52,10 +52,15 @@ void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
 
-
-// free error
-void	free_stack(t_list *stack);
+// error tools
+void	free_stack(t_list **stack);
 void	free_mem(int in_word, char **array);
+void print_err(char *str);
+
+//tests
+void print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
+void print_rev_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
+void test_moves(t_list **a, t_list **b, int n_tests, int slt);
 
 //utils
 int	ft_atoi(const char *nptr);

@@ -29,7 +29,7 @@ static int	push(t_list **src, t_list **dst)
 		*dst = node_to_push;
 		return (1);
 	}
-	else if (*dst)
+	else
 	{
 		(*dst)->prev = node_to_push;
 		node_to_push->next = *dst;
@@ -39,14 +39,18 @@ static int	push(t_list **src, t_list **dst)
 	return (0);
 }
 
-void	pb(t_list **a, t_list **b)
-{
-	if(push(a, b))
-		ft_printf("pb\n");
-}
-
 void	pa(t_list **a, t_list **b)
 {
 	if(push(b, a))
 		ft_printf("pa\n");
+	else	
+		print_err("__________NO push_a\n");
+}
+
+void	pb(t_list **a, t_list **b)
+{
+	if(push(a, b))
+		ft_printf("pb\n");
+	else
+		print_err("__________NO push_b\n");
 }

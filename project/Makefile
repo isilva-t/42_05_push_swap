@@ -27,7 +27,8 @@ SRCS = proj/push_swap.c \
 		  utils/ft_strdup.c \
 		  	utils/ft_printf/ft_printf.c \
 			utils/ft_printf/pf_print_ptr.c \
-			utils/ft_printf/pf_put_nbr_base.c
+			utils/ft_printf/pf_put_nbr_base.c \
+			test/test.c
 
 OBJS = ${SRCS:.c=.o}
 
