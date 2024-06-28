@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:54:49 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/25 11:45:34 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:19:21 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,20 @@
 # include <limits.h>
 # include "./utils/ft_printf/ft_printf.h"
 
-# include <stdio.h> //DELETE THIS BEFORE SUBMIT!!!!!!
-
 typedef struct s_list
 {
-	int	nbr;
-	int	index;
-	int	push_cost;
-	int	above_median;
-	int	cheapest;
-	struct s_list *target_node;
-	struct s_list *next;
-	struct s_list *prev;
+	int				nbr;
+	int				index;
+	int				push_cost;
+	int				above_median;
+	int				cheapest;
+	struct s_list	*target_node;
+	struct s_list	*next;
+	struct s_list	*prev;
 }	t_list;
 
 // stack init
-int	init_stack_a(t_list **a, char	**array);
+int		init_stack_a(t_list **a, char	**array, int i);
 
 // stack utils
 t_list	*find_last_node(t_list *stack);
@@ -55,22 +53,19 @@ void	rrr(t_list **a, t_list **b);
 // error tools
 void	free_stack(t_list **stack);
 void	free_mem(int in_word, char **array);
-void print_err(char *str);
+void	print_err(char *str);
 
 //tests
-void print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
-void test_moves(t_list **a, t_list **b, int n_tests, int slt);
+void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
+void	test_moves(t_list **a, t_list **b, int n_tests, int slt);
+void	view_tests(t_list **a, t_list **b);
 
 //utils
-int	ft_atoi(const char *nptr);
-
-//split
+int		ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char c, int n_words);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
-int	count_words(const char *s, char c);
-void	free_mem(int in_word, char **array);
-
+int		count_words(const char *s, char c);
 
 #endif

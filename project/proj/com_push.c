@@ -41,15 +41,15 @@ static int	push(t_list **src, t_list **dst)
 
 void	pa(t_list **a, t_list **b)
 {
-	if(push(b, a))
+	if (push(b, a))
 		ft_printf("pa\n");
-	else	
+	else
 		print_err("__________NO push_a\n");
 }
 
 void	pb(t_list **a, t_list **b)
 {
-	if(push(a, b))
+	if (push(a, b))
 		ft_printf("pb\n");
 	else
 		print_err("__________NO push_b\n");

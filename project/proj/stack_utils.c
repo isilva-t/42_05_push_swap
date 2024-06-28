@@ -15,7 +15,7 @@
 t_list	*find_last_node(t_list *stack)
 {
 	if (!stack)
-		return NULL;
+		return (NULL);
 	while (stack->next)
 		stack = stack->next;
 	return (stack);
@@ -25,7 +25,7 @@ int	is_not_sorted(t_list *stack)
 {
 	if (!stack->next && !stack)
 		return (-1);
-	while(stack->next)
+	while (stack->next)
 	{
 		stack = stack->next;
 		if (stack->nbr < stack->prev->nbr)

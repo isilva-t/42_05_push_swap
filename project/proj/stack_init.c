@@ -37,11 +37,11 @@ static int	have_syntax_error(char	*str)
 	return (0);
 }
 
-static void append_node(t_list **stack, int n)
+static void	append_node(t_list **stack, int n)
 {
 	t_list	*node;
 	t_list	*last_node;
-	
+
 	if (!stack)
 		return ;
 	node = malloc(sizeof(t_list) + 1);
@@ -73,13 +73,11 @@ static int	have_duplicated(t_list *stack, int n)
 	return (0);
 }
 
-int	init_stack_a(t_list **a, char **array)
+int	init_stack_a(t_list **a, char **array, int i)
 {
-	int	i;
 	long	n;
 
-	i = 0;
-	while(array[i])
+	while (array[i])
 	{
 		if (have_syntax_error(array[i]))
 		{
@@ -88,7 +86,7 @@ int	init_stack_a(t_list **a, char **array)
 		}
 		n = atol(array[i]);
 		if (n > INT_MAX || n < INT_MIN)
-		{	
+		{
 			ft_printf("Error OUT_OF_INT\n"); //DELETE INT
 			return (1);
 		}

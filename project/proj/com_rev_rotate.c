@@ -15,10 +15,11 @@
 static int	rev_rotate(t_list **stack)
 {
 	t_list	*last_node;
+
 	if (!*stack)
-		return(0);
+		return (0);
 	if (!(*stack)->next)
-		return(0);
+		return (0);
 	last_node = find_last_node(*stack);
 	last_node->prev->next = NULL;
 	last_node->next = *stack;
@@ -30,15 +31,15 @@ static int	rev_rotate(t_list **stack)
 
 void	rra(t_list **a)
 {
-	if(rev_rotate(a))
+	if (rev_rotate(a))
 		ft_printf("rra\n");
 	else
 		print_err("______NO REV_rotate___a____NO begin\n");
 }
 
 void	rrb(t_list **b)
-{	
-	if(rev_rotate(b))
+{
+	if (rev_rotate(b))
 		ft_printf("rrb\n");
 	else
 		print_err("______NO REV_rotate___b____NO begin\n");

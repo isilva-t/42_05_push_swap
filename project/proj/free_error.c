@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:29:09 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/21 11:35:27 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:32:02 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void	free_stack(t_list **stack)
 	stack = NULL;
 }
 
-void print_err(char *str)
+void	print_err(char *str)
 {
 	ft_printf(str);
 }
-
-

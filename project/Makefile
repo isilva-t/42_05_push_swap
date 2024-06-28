@@ -6,7 +6,7 @@
 #    By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/08 09:55:09 by isilva-t          #+#    #+#              #
-#    Updated: 2024/06/25 10:47:18 by isilva-t         ###   ########.fr        #
+#    Updated: 2024/06/28 17:38:57 by isilva-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,12 @@ SRCS = proj/push_swap.c \
 		  	utils/ft_printf/ft_printf.c \
 			utils/ft_printf/pf_print_ptr.c \
 			utils/ft_printf/pf_put_nbr_base.c \
-			test/test.c
+			test/test.c \
+			test/print_section.c
 
 OBJS = ${SRCS:.c=.o}
 
-NAME = out
+NAME = push_swap
 
 MSG1 = @echo "________ Compiled Mandatory files!"
 MSG2 = @echo "________ Compiled Bonus files!"

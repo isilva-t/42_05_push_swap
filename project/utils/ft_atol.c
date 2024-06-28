@@ -13,9 +13,9 @@
 long	ft_atol(const char *nptr)
 {
 	int	i;
-	int	signal; 
+	int	signal;
 	int	num;
-	
+
 	i = 0;
 	signal = 1;
 	num = 0;
