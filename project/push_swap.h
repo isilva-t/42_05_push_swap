@@ -59,7 +59,6 @@ void print_err(char *str);
 
 //tests
 void print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
-void print_rev_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
 void test_moves(t_list **a, t_list **b, int n_tests, int slt);
 
 //utils

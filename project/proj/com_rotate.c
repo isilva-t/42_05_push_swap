@@ -34,9 +34,9 @@ static int	rotate(t_list **stack)
 void	ra(t_list **stack)
 {
 	if (!*stack)
-		return (print_err("______NO rotate___a\n"));
+		return (print_err("______NO rotate___a____No beg-list\n"));
 	if (!(*stack)->next)
-		return (print_err("______NO rotate___a\n"));
+		return (print_err("______NO rotate___a____No list->next\n"));
 	else if (rotate(stack))
 		ft_printf("ra\n");
 	else
@@ -46,9 +46,9 @@ void	ra(t_list **stack)
 void	rb(t_list **stack)
 {
 	if (!*stack)
-		return (print_err("______NO rotate___b\n"));
+		return (print_err("______NO rotate___b____No beg-list\n"));
 	if (!(*stack)->next)
-		return (print_err("______NO rotate___b\n"));
+		return (print_err("______NO rotate___b____No list->next\n"));
 	else if (rotate(stack))
 		ft_printf("rb\n");
 	else
@@ -58,11 +58,11 @@ void	rb(t_list **stack)
 void	rr(t_list **a, t_list **b)
 {
 	if (!*a || !*b)
-		return (print_err("______NO rotate_both\n"));
+		return (print_err("______NO rotate_both____No beg-list\n"));
 	if (!(*a)->next || !(*b)->next)
-		return (print_err("______NO rotate_both\n"));
+		return (print_err("______NO rotate_both_____No lst->next\n"));
 	else if (rotate(a) && rotate(b))
 		ft_printf("rr\n");
 	else
-		return (print_err("______NO rotate_both____WTF?!?!?!?!\n"));
+		return (print_err("______NO rotate_both____WHAT?!?\n"));
 }

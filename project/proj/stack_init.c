@@ -49,7 +49,6 @@ static void append_node(t_list **stack, int n)
 		return ;
 	node->next = NULL;
 	node->nbr = n;
-
 	if (!(*stack))
 	{
 		node->prev = NULL;

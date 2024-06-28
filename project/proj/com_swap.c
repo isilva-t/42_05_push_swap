@@ -43,9 +43,9 @@ static int	swap(t_list **stack)
 void	sa(t_list **stack)
 {
 	if (!*stack)
-		return (print_err("____NO swap_a\n"));
+		return (print_err("____NO swap_a___NO begin\n"));
 	if (!(*stack)->next)
-		return (print_err("____NO swap_a\n"));
+		return (print_err("____NO swap_a___NO lst->next\n"));
 	else if (swap(stack))
 		ft_printf("sa\n");
 	else
@@ -55,9 +55,9 @@ void	sa(t_list **stack)
 void	sb(t_list **stack)
 {
 	if (!*stack)
-		return (print_err("____NO swap_b\n"));
+		return (print_err("____NO swap_b____NO begin\n"));
 	if (!(*stack)->next)
-		return (print_err("____NO swap_b\n"));
+		return (print_err("____NO swap_b____NO lst->next\n"));
 	else if (swap(stack))
 		ft_printf("sb\n");
 	else
@@ -66,12 +66,12 @@ void	sb(t_list **stack)
 
 void	ss(t_list **a, t_list **b)
 {
-	if (!*a && !*b)
-		return (print_err("____NO swap_both\n"));
-	if (!(*a)->next && ! (*b)->next)
-		return (print_err("____NO swap_both\n"));
+	if (!*a || !*b)
+		return (print_err("____NO swap_both____NO begin\n"));
+	if (!(*a)->next || !(*b)->next)
+		return (print_err("____NO swap_both____NO lst->next\n"));
 	else if (swap(a) && swap(b))
 		ft_printf("ss\n");
 	else
-		print_err("____NO swap_both\n");
+		print_err("____NO swap_both____WHAT?!?!?\n");
 }

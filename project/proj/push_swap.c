@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	int		tests;
 
 	slt = 1;
+	tests = 2;
 	have_error = 0;
 	a = NULL;
 	b = NULL;
@@ -45,18 +46,14 @@ int	main(int ac, char **av)
 			ft_printf("\nSORTED!!!\n");
 		else if (is_not_sorted(a) == -1 && a)
 			ft_printf("\nTHERE IS SOME ANOTHER ERROR MY FRIEND!!!\n");
-	rrr(&a, &b);
-		tests = 1;
-		while (tests-- > 0)
-			test_moves(&a, &b, 0, slt);	
-
-		//ft_printf("\nTEST free_stack(a) whithout check if exists \"b\"\n\n");
-		//free_stack(&a);
+		ft_printf("STACK CREATED:\n");
+		print_stack(&a, &b, NULL, NULL);		
+		ft_printf("___________________________________________\n");
+		test_moves(&a, &b, tests, slt);	
 		while (b)
 			pa(&a, &b);
 		ft_printf("\nfinal result:\n");
 		print_stack(&a, &b, NULL, NULL);		
-		print_rev_stack(&a, &b, NULL, NULL);
 		free_stack(&a);
 	}
 	else if (have_error)
