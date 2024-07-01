@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:54:49 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/28 17:19:21 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/01 13:32:22 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ int		init_stack_a(t_list **a, char	**array, int i);
 // stack utils
 t_list	*find_last_node(t_list *stack);
 int		is_not_sorted(t_list *stack);
+int		ft_lstsize(t_list *lst);
+t_list	*find_biggest_node(t_list *stack);
+
+// stack_order
+void	three_order(t_list **stack);
+void	order_big_stack(t_list **a, t_list **b);
 
 //commands
 void	pa(t_list **a, t_list **b);
@@ -58,7 +64,7 @@ void	print_err(char *str);
 //tests
 void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
 void	test_moves(t_list **a, t_list **b, int n_tests, int slt);
-void	view_tests(t_list **a, t_list **b);
+void	view_tests(t_list **a, t_list **b, char c);
 
 //utils
 int		ft_atoi(const char *nptr);

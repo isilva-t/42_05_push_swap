@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:01:26 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/28 17:36:43 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:58:46 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,30 @@ void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b)
 // last two vars in "test_moves" are: 
 // - number of test_moves to run (recursively). 0 or 1, runs once
 // sleep time between function run (at end of function
-void	view_tests(t_list **a, t_list **b)
+void	view_tests(t_list **a, t_list **b, char c)
 {
-	if (is_not_sorted(*a) && *a)
-		ft_printf("\nNOT sorted....\n");
-	else if (is_not_sorted(*a) == 0 && *a)
-		ft_printf("\nSORTED!!!\n");
-	else if (is_not_sorted(*a) == -1 && *a)
-		ft_printf("\nTHERE IS SOME ANOTHER ERROR MY FRIEND!!!\n");
-	ft_printf("STACK CREATED:\n");
-	print_stack(a, b, NULL, NULL);
-	ft_printf("___________________________________________\n");
-	test_moves(a, b, 0, 0);
-	ft_printf("\nMOVE ALL TO \"a\":\n");
-	while (*b)
-		pa(a, b);
-	ft_printf("\nfinal result:\n");
-	print_stack(a, b, NULL, NULL);
-	free_stack(a);
+	if (c == 'i')
+	{
+		print_stack(a, b, NULL, NULL);
+		if (is_not_sorted(*a) && *a)
+			ft_printf("\nNOT sorted....\n");
+		else if (is_not_sorted(*a) == 0 && *a)
+			ft_printf("\nSORTED!!!\n");
+		else if (is_not_sorted(*a) == -1 && *a)
+			ft_printf("\nTHERE IS SOME ANOTHER ERROR MY FRIEND!!!\n");
+	}
+	else if (c == 't')
+	{
+		test_moves(a, b, 0, 0);
+		ft_printf("\nMOVE ALL TO \"a\":\n");
+		while (*b)
+			pa(a, b);
+	}
+	else
+	{
+		ft_printf("\nfinal result:\n");
+		print_stack(a, b, NULL, NULL);
+		free_stack(a);
+		ft_printf("________________________________________________\n");
+	}
 }

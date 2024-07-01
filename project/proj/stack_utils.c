@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:33:04 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/20 16:39:19 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/01 13:33:17 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,34 @@ int	is_not_sorted(t_list *stack)
 			return (1);
 	}
 	return (0);
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int		size;
+	t_list	*counter;
+
+	size = 0;
+	counter = (t_list *)lst;
+	while (counter)
+	{
+		size++;
+		counter = counter->next;
+	}
+	return (size);
+}
+
+t_list	*find_biggest_node(t_list *stack)
+{
+	t_list	*biggest_node;
+	if (!stack)
+		return (NULL);
+	biggest_node = stack;
+	while (stack->next)
+	{
+		stack = stack->next;
+		if (stack->nbr > biggest_node->nbr)
+			biggest_node = stack;
+	}
+	return (biggest_node);
 }
