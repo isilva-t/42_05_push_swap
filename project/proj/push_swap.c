@@ -41,7 +41,7 @@ int	main(int ac, char **av)
 			if (ft_lstsize(a) == 2)
 				sa(&a);
 			else if (ft_lstsize(a) == 3)
-				three_order(&a);
+				order_three(&a);
 			else
 				order_big_stack(&a, &b);
 		}

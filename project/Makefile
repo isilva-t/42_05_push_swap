@@ -6,7 +6,7 @@
 #    By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/08 09:55:09 by isilva-t          #+#    #+#              #
-#    Updated: 2024/07/01 11:14:05 by isilva-t         ###   ########.fr        #
+#    Updated: 2024/07/02 10:42:11 by isilva-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,15 @@ SRCS = proj/push_swap.c \
 	   proj/com_swap.c \
 	   proj/com_rotate.c \
 	   proj/com_rev_rotate.c \
-	   	proj/stack_order.c \
-		  utils/ft_split.c \
-		  utils/ft_strlen.c \
-		  utils/ft_substr.c \
-		  utils/ft_strdup.c \
+	   	proj/order_big_stack.c \
+		proj/order_three.c \
+		  utils/libft/ft_split.c \
+		  utils/libft/ft_strlen.c \
+		  utils//libft/ft_substr.c \
+		  utils/libft/ft_strdup.c \
+		  utils/libft/ft_lstsize.c \
+		  utils/libft/ft_isdigit.c \
+		  utils/libft/ft_lstlast.c \
 		  	utils/ft_printf/ft_printf.c \
 			utils/ft_printf/pf_print_ptr.c \
 			utils/ft_printf/pf_put_nbr_base.c \

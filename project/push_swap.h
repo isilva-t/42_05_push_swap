@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:54:49 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/07/01 13:32:22 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/02 17:29:40 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@
 # include <limits.h>
 # include "./utils/ft_printf/ft_printf.h"
 
+#include <stdio.h> //REMOVE THIS
+
 typedef struct s_list
 {
 	int				nbr;
+	long			pos_nbr;
 	int				index;
 	int				push_cost;
 	int				above_median;
 	int				cheapest;
+	int				target_nbr;
 	struct s_list	*target_node;
 	struct s_list	*next;
 	struct s_list	*prev;
@@ -34,13 +38,14 @@ typedef struct s_list
 int		init_stack_a(t_list **a, char	**array, int i);
 
 // stack utils
-t_list	*find_last_node(t_list *stack);
+t_list	*ft_lstlast(t_list *lst);
 int		is_not_sorted(t_list *stack);
 int		ft_lstsize(t_list *lst);
 t_list	*find_biggest_node(t_list *stack);
+t_list	*find_lowest_node(t_list *stack);
 
-// stack_order
-void	three_order(t_list **stack);
+// order stack
+void	order_three(t_list **stack);
 void	order_big_stack(t_list **a, t_list **b);
 
 //commands
@@ -73,5 +78,7 @@ size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
 int		count_words(const char *s, char c);
+int		ft_isdigit(int c);
+t_list	*ft_lstlast(t_list *lst);
 
 #endif

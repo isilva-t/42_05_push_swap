@@ -6,18 +6,11 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 14:53:20 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/25 11:49:56 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/02 17:17:59 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static int	ft_isdigit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 
 static int	have_syntax_error(char	*str)
 {
@@ -37,28 +30,30 @@ static int	have_syntax_error(char	*str)
 	return (0);
 }
 
-static void	append_node(t_list **stack, int n)
+static void	append_node(t_list **stack, int n, t_list *new_node, t_list *last_node)
 {
-	t_list	*node;
-	t_list	*last_node;
-
 	if (!stack)
 		return ;
-	node = malloc(sizeof(t_list) + 1);
-	if (!node)
+	new_node = malloc(sizeof(t_list) + 1);
+	if (!new_node)  
 		return ;
-	node->next = NULL;
-	node->nbr = n;
+	new_node->next = NULL;
+	new_node->nbr = n;
+	new_node->index = -1;
+//	new_node->push_cost = -1;
+//	new_node->above_median = -1;
+//	new_node->cheapest = -1;
+//	new_node->target_nbr = -1;
 	if (!(*stack))
 	{
-		node->prev = NULL;
-		*stack = node;
+		new_node->prev = NULL;
+		*stack = new_node;
 	}
 	else
 	{
-		last_node = find_last_node(*stack);
-		last_node->next = node;
-		node->prev = last_node;
+		last_node = ft_lstlast(*stack);
+		last_node->next = new_node;
+		new_node->prev = last_node;
 	}
 }
 
@@ -95,7 +90,7 @@ int	init_stack_a(t_list **a, char **array, int i)
 			ft_printf("Error HAVE_DUPLICATED\n"); /// DELETE DUP
 			return (1);
 		}
-		append_node(a, (int)n);
+		append_node(a, (int)n, NULL, NULL);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:01:26 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/07/01 11:58:46 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:13:08 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 static	t_list	*print_line(t_list *node, char s)
 {
-	ft_printf("     %c_  %d", s, node->nbr);
+	ft_printf("      %c %d  _in%d_pc%d_am%d_ch%d_ T_%d",
+		   s, node->nbr,
+	node->index,
+	node->push_cost,
+	node->above_median,
+	node->cheapest,
+	node->target_nbr);
 	node = node->next;
 	return (node);
 }
@@ -22,24 +28,24 @@ static	t_list	*print_line(t_list *node, char s)
 static	void	print_nodes(t_list *cur_a, t_list *cur_b,
 						t_list *cur_prev_a, t_list *cur_prev_b)
 {
-	auto int i = 0;
+	auto int i = 0, print_rev = 0;
 	ft_printf("                only w/\"->next\"  |  \"->next->prev->next\"");
-	while (cur_a || cur_b || cur_prev_a || cur_prev_b)
+	while (cur_a || cur_b)
 	{
-		ft_printf("\nnode_%d->nbr", i);
+		ft_printf("\nnd%d_", i);
 		if (cur_a)
 			cur_a = print_line(cur_a, 'a');
 		else
-			ft_printf("          ");
+			ft_printf("                                ");
 		if (cur_b)
 			cur_b = print_line(cur_b, 'b');
 		else
-			ft_printf("          ");
-		if (cur_prev_a)
+			ft_printf("                             ");
+		if (cur_prev_a && print_rev)
 			cur_prev_a = print_line(cur_prev_a, 'a');
-		else
-			ft_printf("          ");
-		if (cur_prev_b)
+		else if (print_rev)
+			ft_printf("                       ");
+		if (cur_prev_b && print_rev)
 			cur_prev_b = print_line(cur_prev_b, 'b');
 		i++;
 	}
@@ -53,7 +59,7 @@ void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b)
 	{
 		cur_a = *a;
 		cur_prev_a = *a;
-		cur_prev_a = find_last_node(cur_prev_a);
+		cur_prev_a = ft_lstlast(cur_prev_a);
 		while (cur_prev_a->prev)
 			cur_prev_a = cur_prev_a->prev;
 	}
@@ -61,7 +67,7 @@ void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b)
 	{
 		cur_b = *b;
 		cur_prev_b = *b;
-		cur_prev_b = find_last_node(cur_prev_b);
+		cur_prev_b = ft_lstlast(cur_prev_b);
 		while (cur_prev_b->prev)
 			cur_prev_b = cur_prev_b->prev;
 	}

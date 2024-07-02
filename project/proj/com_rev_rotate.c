@@ -6,7 +6,7 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 10:35:07 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/06/25 12:31:34 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/02 10:40:47 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	rev_rotate(t_list **stack)
 		return (0);
 	if (!(*stack)->next)
 		return (0);
-	last_node = find_last_node(*stack);
+	last_node = ft_lstlast(*stack);
 	last_node->prev->next = NULL;
 	last_node->next = *stack;
 	last_node->prev = NULL;
