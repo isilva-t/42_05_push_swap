@@ -214,31 +214,140 @@ void	order_big_stack(t_list **a, t_list **b)
 	}
 }*/
 
-static int	set_positive_nbr(t_list *stack)
+static void	index_stack(t_list *stack)
 {
-	if (!stack && !stack->nbr)
+	unsigned int	i;
+	t_list	*lowest_node;
+	
+	i = 0;
+	if (!stack && !stack->nbr_to_index)
+		return ;
+	lowest_node = find_lowest_node(stack);
+	while (lowest_node->nbr_to_index != (long)2147483647 + 1)
+	{
+		lowest_node->index = i++;
+		lowest_node->nbr_to_index = (long)2147483647 + 1;
+		lowest_node = find_lowest_node(stack);
+	}
+}
+
+static void    ft_utoabit_stack(t_list *stack)
+{
+	long	i;
+	long	rest;
+	long	nbr;
+
+	if (!stack)
+		return;
+	while (stack)
+	{
+		nbr = stack->index;
+		i = 0;  
+    	while (i < 32)
+			stack->arraybit[i++] = '0';
+    	while (--i >= 0 && nbr != 0)
+    	{
+			rest = nbr;
+			nbr = nbr / 2;
+			stack->arraybit[i] = rest % 2 + '0';
+		}
+		stack->arraybit[32] = 0;
+		stack = stack->next;
+	}
+}
+
+static int	how_much_bit(t_list *stack, int position, char bit)
+{
+	int	n_bits;
+
+	n_bits = 0;
+	if (!stack)
 		return (0);
-	if (stack->nbr < 0)
+	while (stack)
+	{
+		if (stack->arraybit[position] == bit)
+			n_bits++;
+		stack = stack->next;
+	}
+	return (n_bits);
+}
+
+static void	radix_b(t_list **a, t_list **b, int i)
+{
+	int	bit;
+	
+	bit = '1';
+	if (!a || !b || !*b)
+		return ;
+	if (how_much_bit(*b, i, '1') == ft_lstsize(*b) ||
+		how_much_bit(*b, i, '0') == ft_lstsize(*b))
+		return ;
+	while (bit == '1')
+	{
+		if (*b && (*b)->arraybit[i] == '1')
+			pa(a, b);
+		else if (how_much_bit(*b, i, '0') < ft_lstsize(*b))
+			rb(b);
+		else
+			bit = '0';
+	}
+	print_stack(a, b, NULL, NULL);
+
+	return ;
+}
+
+static void	order_radix(t_list **a, t_list **b)
+{
+	int	i;
+	int	bit;
+
+	if (!a || !b || !*a)
+		return ;
+	i = 32;
+	bit = '0';
+
+	while (--i >= 0)
+	{
+		bit = '0';
+		if (how_much_bit(*a, i, '1') == ft_lstsize(*a) ||
+			how_much_bit(*a, i, '0') == ft_lstsize(*a))
+			continue ;
+		while (bit == '0')
+		{
+			if (*a && (*a)->arraybit[i] == '0')
+				pb(a, b);
+			else if (how_much_bit(*a, i, '1') < ft_lstsize(*a))
+				ra(a);
+			else
+				bit = '1';
+		}
+		print_stack(a, b, NULL, NULL);
+		if (i - 1 >= 0)
+			radix_b(a, b, i);
+	}
+	while (*b)
+		pa(a, b);
+	print_stack(a, b, NULL, NULL);
 
 }
 
 void	order_big_stack(t_list **a, t_list **b)
 {
 	long	stack_len;
-	t_list	*lowest_node;
 
-	lowest_node = find_lowest_node(*a);
-	
+	index_stack(*a);
+	ft_utoabit_stack(*a);
+print_stack(a, b, NULL, NULL);
+	order_radix(a, b);
 	stack_len = ft_lstsize(*a);
 
-	
-	if (stack_len-- > 3)
-		pb (a, b);
-	if (stack_len-- > 3)
-		pb (a, b);
 
-print_stack(a, b, NULL, NULL);
-	while (stack_len-- != 3)
-	{
-	}
+//	if (stack_len-- > 3)
+//		pb (a, b);
+//	if (stack_len-- > 3)
+//		pb (a, b);
+
+//	while (stack_len-- != 3)
+//	{
+//	}
 }

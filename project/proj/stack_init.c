@@ -39,6 +39,7 @@ static void	append_node(t_list **stack, int n, t_list *new_node, t_list *last_no
 		return ;
 	new_node->next = NULL;
 	new_node->nbr = n;
+	new_node->nbr_to_index = (long)n;
 	new_node->index = -1;
 //	new_node->push_cost = -1;
 //	new_node->above_median = -1;

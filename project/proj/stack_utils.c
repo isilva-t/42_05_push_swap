@@ -49,7 +49,7 @@ t_list	*find_lowest_node(t_list *stack)
 	while (stack->next)
 	{
 		stack = stack->next;
-		if (stack->nbr < lowest_node->nbr)
+		if (stack->nbr_to_index < lowest_node->nbr_to_index)
 			lowest_node = stack;
 	}
 	return (lowest_node);

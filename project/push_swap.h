@@ -23,7 +23,8 @@
 typedef struct s_list
 {
 	int				nbr;
-	long			pos_nbr;
+	long			nbr_to_index;
+	char			arraybit[33];
 	int				index;
 	int				push_cost;
 	int				above_median;

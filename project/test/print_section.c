@@ -14,13 +14,14 @@
 
 static	t_list	*print_line(t_list *node, char s)
 {
-	ft_printf("      %c %d  _in%d_pc%d_am%d_ch%d_ T_%d",
-		   s, node->nbr,
-	node->index,
-	node->push_cost,
-	node->above_median,
-	node->cheapest,
-	node->target_nbr);
+	printf("  %s %c  %d", node->arraybit, s, node->index);
+	//printf("   __%d      ", node->nbr);
+
+//	node->index,
+//	node->push_cost,
+//	node->above_median,
+//	node->cheapest,
+//	node->target_nbr);
 	node = node->next;
 	return (node);
 }
@@ -29,27 +30,27 @@ static	void	print_nodes(t_list *cur_a, t_list *cur_b,
 						t_list *cur_prev_a, t_list *cur_prev_b)
 {
 	auto int i = 0, print_rev = 0;
-	ft_printf("                only w/\"->next\"  |  \"->next->prev->next\"");
+//	ft_printf("                only w/\"->next\"  |  \"->next->prev->next\"");
 	while (cur_a || cur_b)
 	{
-		ft_printf("\nnd%d_", i);
+		printf("\nnd%d", i);
 		if (cur_a)
 			cur_a = print_line(cur_a, 'a');
 		else
-			ft_printf("                                ");
+			printf("                                                    ");
 		if (cur_b)
 			cur_b = print_line(cur_b, 'b');
 		else
-			ft_printf("                             ");
+			printf("                   ");
 		if (cur_prev_a && print_rev)
 			cur_prev_a = print_line(cur_prev_a, 'a');
 		else if (print_rev)
-			ft_printf("                       ");
+			printf("                   ");
 		if (cur_prev_b && print_rev)
 			cur_prev_b = print_line(cur_prev_b, 'b');
 		i++;
 	}
-	ft_printf("\n\n");
+	printf("\n\n");
 }
 
 void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b)
