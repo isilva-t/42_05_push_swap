@@ -15,7 +15,7 @@
 static	t_list	*print_line(t_list *node, char s)
 {
 	printf("  %s %c  %d", node->arraybit, s, node->index);
-	//printf("   __%d      ", node->nbr);
+	printf("   __%d      ", node->nbr);
 
 //	node->index,
 //	node->push_cost,

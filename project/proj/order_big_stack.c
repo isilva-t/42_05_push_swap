@@ -274,26 +274,33 @@ static int	how_much_bit(t_list *stack, int position, char bit)
 
 static void	radix_b(t_list **a, t_list **b, int i)
 {
+	int	j;
 	int	bit;
 	
 	bit = '1';
+	j = 1;
 	if (!a || !b || !*b)
 		return ;
-	if (how_much_bit(*b, i, '1') == ft_lstsize(*b) ||
-		how_much_bit(*b, i, '0') == ft_lstsize(*b))
+	while (j > 0)
+	{
+	if (how_much_bit(*b, i - j, '1') == ft_lstsize(*b) ||
+		how_much_bit(*b, i - j, '0') == ft_lstsize(*b))
 		return ;
 	while (bit == '1')
 	{
-		if (*b && (*b)->arraybit[i] == '1')
+		if (*b && (*b)->arraybit[i - j] == '1')
 			pa(a, b);
-		else if (how_much_bit(*b, i, '0') < ft_lstsize(*b))
+		else if (how_much_bit(*b, i - j, '0') < ft_lstsize(*b))
 			rb(b);
 		else
 			bit = '0';
 	}
-	print_stack(a, b, NULL, NULL);
-
-	return ;
+print_stack(a, b, NULL, NULL);
+	if (how_much_bit(*b, i - j, '1') == ft_lstsize(*b) ||
+		how_much_bit(*b, i - j, '0') == ft_lstsize(*b))
+		return ;
+	j--;
+	}
 }
 
 static void	order_radix(t_list **a, t_list **b)
@@ -304,8 +311,6 @@ static void	order_radix(t_list **a, t_list **b)
 	if (!a || !b || !*a)
 		return ;
 	i = 32;
-	bit = '0';
-
 	while (--i >= 0)
 	{
 		bit = '0';
@@ -322,6 +327,8 @@ static void	order_radix(t_list **a, t_list **b)
 				bit = '1';
 		}
 		print_stack(a, b, NULL, NULL);
+		//while (*b)
+		//	pa(a, b);
 		if (i - 1 >= 0)
 			radix_b(a, b, i);
 	}
@@ -333,13 +340,13 @@ static void	order_radix(t_list **a, t_list **b)
 
 void	order_big_stack(t_list **a, t_list **b)
 {
-	long	stack_len;
+//	long	stack_len;
 
 	index_stack(*a);
 	ft_utoabit_stack(*a);
 print_stack(a, b, NULL, NULL);
 	order_radix(a, b);
-	stack_len = ft_lstsize(*a);
+//	stack_len = ft_lstsize(*a);
 
 
 //	if (stack_len-- > 3)
