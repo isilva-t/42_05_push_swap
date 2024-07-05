@@ -13,17 +13,16 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = proj/push_swap.c \
+SRCS = push_swap.c \
 	   proj/stack_utils.c \
 	   proj/stack_init.c \
-	   proj/free_error.c \
 	   proj/com_push.c \
 	   proj/com_swap.c \
 	   proj/com_rotate.c \
 	   proj/com_rev_rotate.c \
-	   	proj/order_big_stack.c \
-		proj/order_three.c \
-		  utils/libft/ft_split.c \
+	   proj/order_big_stack.c \
+	   proj/free_error.c \
+		 utils/libft/ft_split.c \
 		  utils/libft/ft_strlen.c \
 		  utils//libft/ft_substr.c \
 		  utils/libft/ft_strdup.c \
@@ -33,8 +32,9 @@ SRCS = proj/push_swap.c \
 		  	utils/ft_printf/ft_printf.c \
 			utils/ft_printf/pf_print_ptr.c \
 			utils/ft_printf/pf_put_nbr_base.c \
-			test/test.c \
-			test/print_section.c
+
+TEST = test/test.c \
+	   test/print_section.c
 
 OBJS = ${SRCS:.c=.o}
 

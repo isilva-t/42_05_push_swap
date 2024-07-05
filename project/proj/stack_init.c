@@ -30,22 +30,19 @@ static int	have_syntax_error(char	*str)
 	return (0);
 }
 
-static void	append_node(t_list **stack, int n, t_list *new_node, t_list *last_node)
+static void	append_node(t_list **stack, int n,
+						t_list *new_node, t_list *last_node)
 {
 	if (!stack)
 		return ;
 	new_node = malloc(sizeof(t_list) + 1);
-	if (!new_node)  
+	if (!new_node)
 		return ;
 	new_node->next = NULL;
 	new_node->nbr = n;
 	new_node->nbr_to_index = (long)n;
 	new_node->index = -1;
-	new_node->moves = 0;
-//	new_node->push_cost = -1;
-//	new_node->above_median = -1;
-//	new_node->cheapest = -1;
-//	new_node->target_nbr = -1;
+	new_node->above_median = -1;
 	if (!(*stack))
 	{
 		new_node->prev = NULL;
@@ -70,26 +67,27 @@ static int	have_duplicated(t_list *stack, int n)
 	return (0);
 }
 
-int	init_stack_a(t_list **a, char **array, int i)
+int	init_stack_a(t_list **a, char **array, int i, long n)
 {
-	long	n;
-
 	while (array[i])
 	{
 		if (have_syntax_error(array[i]))
 		{
-			ft_printf("Error SYNTAX\n"); // DELETE SYNTAX
+			ft_printf("Error\n");
+			free_stack(a);
 			return (1);
 		}
 		n = atol(array[i]);
 		if (n > INT_MAX || n < INT_MIN)
 		{
-			ft_printf("Error OUT_OF_INT\n"); //DELETE INT
+			ft_printf("Error\n");
+			free_stack(a);
 			return (1);
 		}
 		if (have_duplicated(*a, n))
 		{
-			ft_printf("Error HAVE_DUPLICATED\n"); /// DELETE DUP
+			ft_printf("Error\n");
+			free_stack(a);
 			return (1);
 		}
 		append_node(a, (int)n, NULL, NULL);

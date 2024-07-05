@@ -89,3 +89,8 @@ void	test_moves(t_list **a, t_list **b, int n_tests, int slt)
 	while (--n_tests > 0)
 		test_moves(a, b, -1, slt);
 }
+
+void	print_err(char *str)
+{
+	ft_printf(str);
+}

@@ -12,39 +12,22 @@
 
 #include "../push_swap.h"
 
-static void	index_stack(t_list *stack)
-{
-	unsigned int	i;
-	t_list	*lowest_node;
-	
-	i = 0;
-	if (!stack && !stack->nbr_to_index)
-		return ;
-	lowest_node = find_lowest_node(stack);
-	while (lowest_node->nbr_to_index != (long)2147483647 + 1)
-	{
-		lowest_node->index = i++;
-		lowest_node->nbr_to_index = (long)2147483647 + 1;
-		lowest_node = find_lowest_node(stack);
-	}
-}
-
-static void    ft_utoabit_stack(t_list *stack)
+static void	ft_utoabit_stack(t_list *stack)
 {
 	long	i;
 	long	rest;
 	long	nbr;
 
 	if (!stack)
-		return;
+		return ;
 	while (stack)
 	{
-		nbr = stack->index;
-		i = 0;  
-    	while (i < 32)
+		nbr = stack->index_a;
+		i = 0;
+		while (i < 32)
 			stack->arraybit[i++] = '0';
-    	while (--i >= 0 && nbr != 0)
-    	{
+		while (--i >= 0 && nbr != 0)
+		{
 			rest = nbr;
 			nbr = nbr / 2;
 			stack->arraybit[i] = rest % 2 + '0';
@@ -70,7 +53,7 @@ static int	how_much_bit(t_list *stack, int position, char bit)
 	return (n_bits);
 }
 
-static int bit_groups_ok(t_list *stack, int i, char stack_name)
+static int	bit_sequence_ok(t_list *stack, int i, char stack_name)
 {
 	if (!stack)
 		return (1);
@@ -78,14 +61,12 @@ static int bit_groups_ok(t_list *stack, int i, char stack_name)
 	{
 		if (stack_name == 'a')
 		{
-			if (stack->arraybit[i] == '1' &&
-				stack->next->arraybit[i] == '0')
+			if (stack->arraybit[i] == '1' && stack->next->arraybit[i] == '0')
 				return (0);
 		}
 		if (stack_name == 'b')
 		{
-			if (stack->arraybit[i] == '0' &&
-			stack->next->arraybit[i] == '1')
+			if (stack->arraybit[i] == '0' && stack->next->arraybit[i] == '1')
 				return (0);
 		}
 		stack = stack->next;
@@ -109,125 +90,70 @@ static t_list	*find_last_wanted(t_list *stack, int i, int bit)
 	return (last_node);
 }
 
-static void	make_index(t_list *stack)
+static void	radix_b(t_list **a, t_list **b, t_list *last_wanted_b, int i)
 {
-	int	index;
-	int	lstsize;
-
-	index = 0;
-	if (!stack)
-		return ;
-	lstsize = ft_lstsize(stack);
-	while (stack)
-	{
-		stack->index = index++;
-		if (stack->index < lstsize / 2)
-			stack->above_median = 1;
-		else
-			stack->above_median = 0;
-		stack = stack->next;
-	}
-}
-
-static void	radix_b(t_list **a, t_list **b, int i)
-{
-	t_list	*last_wanted;
-	
 	if (!a || !b || !*b)
 		return ;
-	if (how_much_bit(*b, i, '0') == ft_lstsize(*b))
+	if (how_much_bit(*b, i - 1, '0') == ft_lstsize(*b))
 		return ;
-	last_wanted = find_last_wanted(*b, i, '0');
-	while (how_much_bit(*b, i, '1') > 0)
+	last_wanted_b = find_last_wanted(*b, i - 1, '0');
+	while (how_much_bit(*b, i - 1, '1') > 0)
 	{
-		if (*b && (*b)->arraybit[i] == '1')
+		if (how_much_bit(*b, i - 1, '1') == 0
+			&& ft_lstlast(*b) == last_wanted_b)
+			break ;
+		if (*b && (*b)->arraybit[i - 1] == '1')
 			pa(a, b);
 		else
 			rb(b);
 	}
-	if (i < 30 && ft_lstsize(*b) > 1)
-	{
-		while (ft_lstlast(*b) != last_wanted)
-		{
-			make_index(*b);
-			if (last_wanted->above_median == 0)
-				rrb(b);
-			if (last_wanted->above_median == 1)
-				rb(b);
-		}
-	}
-	print_stack(a, b, NULL, NULL);
+	if ((i - 1) < 30 && ft_lstsize(*b) > 1)
+		while (ft_lstlast(*b) != last_wanted_b)
+			rb(b);
 }
 
-static void	order_radix(t_list **a, t_list **b)
+static void	move_last_wanted_a(t_list **a, t_list *last_wanted_a, int i)
 {
-	int	i;
-	t_list	*last_wanted;
+	if (!a || !*a || !last_wanted_a)
+		return ;
+	if (i < 32 && ft_lstsize(*a) > 1)
+	{
+		while (ft_lstlast(*a) != last_wanted_a)
+		{
+			make_index_again(*a);
+			if (last_wanted_a->above_median == 0)
+				rra(a);
+			if (last_wanted_a->above_median == 1)
+				ra(a);
+		}
+	}
+}
 
+void	order_radix(t_list **a, t_list **b, t_list *last_wanted_a, int i)
+{
 	if (!a || !b || !*a)
 		return ;
-	i = 32;
+	index_stack(*a);
+	ft_utoabit_stack(*a);
 	while (--i >= 0)
 	{
-		if (how_much_bit(*a, i, '1') == ft_lstsize(*a) ||
-			how_much_bit(*a, i, '0') == ft_lstsize(*a))
+		if (how_much_bit(*a, i, '1') == ft_lstsize(*a)
+			|| how_much_bit(*a, i, '0') == ft_lstsize(*a))
 			continue ;
-		last_wanted = find_last_wanted(*a, i, '1');
+		last_wanted_a = find_last_wanted(*a, i, '1');
 		while (how_much_bit(*a, i, '0') > 0)
 		{
-			if (bit_groups_ok(*a, i, 'a') && ft_lstlast(*a) == last_wanted)
+			if (bit_sequence_ok(*a, i, 'a') && ft_lstlast(*a) == last_wanted_a)
 				break ;
 			if (*a && (*a)->arraybit[i] == '0' && how_much_bit(*a, i, '1') > 0)
 				pb(a, b);
 			else
 				ra(a);
 		}
-		if (i < 31 && ft_lstsize(*a) > 1)
-		{
-
-			while (ft_lstlast(*a) != last_wanted)
-			{
-				make_index(*a);
-				if (last_wanted->above_median == 0)
-					rra(a);
-				if (last_wanted->above_median == 1)
-					ra(a);
-			}
-		}
-		print_stack(a, b, NULL, NULL);
-		radix_b(a, b, i - 1);
+		move_last_wanted_a(a, last_wanted_a, i);
+		radix_b(a, b, NULL, i);
 	}
 	while (*b)
-	{
 		pa(a, b);
-	}
-	print_stack(a, b, NULL, NULL);
-}
-
-void	order_big_stack(t_list **a, t_list **b)
-{
-/*	int		stack_len;
-
-	stack_len = ft_lstsize(*a);
-	if (stack_len-- > 3)
-		pb (a, b);
-	if (stack_len-- > 3)
-		pb (a, b);
-	long	stack_len;
-*/
-	index_stack(*a);
-	ft_utoabit_stack(*a);
-print_stack(a, b, NULL, NULL);
-		order_radix(a, b);
-//	stack_len = ft_lstsize(*a);
-
-
-//	if (stack_len-- > 3)
-//		pb (a, b);
-//	if (stack_len-- > 3)
-//		pb (a, b);
-
-//	while (stack_len-- != 3)
-//	{
-//	}
+	free_stack(a);
 }

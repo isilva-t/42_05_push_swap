@@ -25,20 +25,16 @@ typedef struct s_list
 	int				nbr;
 	long			nbr_to_index;
 	char			arraybit[33];
-	int				moves;
 	int				index;
+	int				index_a;
 	int				last_wanted;
-	int				push_cost;
 	int				above_median;
-	int				cheapest;
-	int				target_nbr;
-	struct s_list	*target_node;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;
-
+ 
 // stack init
-int		init_stack_a(t_list **a, char	**array, int i);
+int		init_stack_a(t_list **a, char	**array, int i, long n);
 
 // stack utils
 t_list	*ft_lstlast(t_list *lst);
@@ -46,10 +42,11 @@ int		is_not_sorted(t_list *stack);
 int		ft_lstsize(t_list *lst);
 t_list	*find_biggest_node(t_list *stack);
 t_list	*find_lowest_node(t_list *stack);
+void	index_stack(t_list *stack);
+void	make_index_again(t_list *stack);
 
 // order stack
-void	order_three(t_list **stack);
-void	order_big_stack(t_list **a, t_list **b);
+void	order_radix(t_list **a, t_list **b, t_list *last_wanted_a, int i);
 
 //commands
 void	pa(t_list **a, t_list **b);
@@ -70,9 +67,9 @@ void	free_mem(int in_word, char **array);
 void	print_err(char *str);
 
 //tests
-void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
-void	test_moves(t_list **a, t_list **b, int n_tests, int slt);
-void	view_tests(t_list **a, t_list **b, char c);
+//void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b);
+//void	test_moves(t_list **a, t_list **b, int n_tests, int slt);
+//void	view_tests(t_list **a, t_list **b, char c);
 
 //utils
 int		ft_atoi(const char *nptr);
