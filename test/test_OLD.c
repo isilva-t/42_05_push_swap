@@ -15,30 +15,30 @@
 static void	certify_moves(t_list **a, t_list **b)
 {
 	ft_printf("CERTIFY MOVES:\n");
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	ft_printf("____________________________________________________\n");
 	pb(a, b);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	ss(a, b);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	sa(a);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	sb(b);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	rrr(a, b);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	ra(a);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	rb(b);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	rr(a, b);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	rra(a);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	rrb(b);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 	pa(a, b);
-	print_stack(a, b, NULL, NULL);
+	print_stack(a, b);
 }
 
 static int	random_move(t_list **a, t_list **b, int nbr, int all)

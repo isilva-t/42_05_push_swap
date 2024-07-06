@@ -6,59 +6,57 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:01:26 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/07/02 13:13:08 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/06 11:00:00 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+// used before in print_line
+//printf("   %c  %d", node->arraybit, s, node->index);
+//printf("   __%d      ", node->nbr);
 static	t_list	*print_line(t_list *node, char s)
 {
-	printf("  %s ", node->arraybit);
-	//printf("   %c  %d", node->arraybit, s, node->index);
-	//printf("   __%d      ", node->nbr);
+	ft_printf("   %s ", node->arraybit);
 	s = s + 1 - 1;
-//	node->index,
-//	node->push_cost,
-//	node->above_median,
-//	node->cheapest,
-//	node->target_nbr);
 	node = node->next;
 	return (node);
 }
 
+// used befor in print_nodes
+//	ft_printf("                only w/\"->next\"  |  \"->next->prev->next\"");
 static	void	print_nodes(t_list *cur_a, t_list *cur_b,
 						t_list *cur_prev_a, t_list *cur_prev_b)
 {
-	auto int i = 0, print_rev = 0, print = 1;
-//	ft_printf("                only w/\"->next\"  |  \"->next->prev->next\"");
+	auto int i = 0, print_rev = 0, print = 0;
 	if (print == 1)
 		return ;
 	while (cur_a || cur_b)
 	{
-		printf("\n");
+		ft_printf("\n");
 		if (cur_a)
 			cur_a = print_line(cur_a, 'a');
 		else
-			printf("                                   ");
+			ft_printf("                                   ");
 		if (cur_b)
 			cur_b = print_line(cur_b, 'b');
 		else
-			printf("                   ");
+			ft_printf("                   ");
 		if (cur_prev_a && print_rev)
 			cur_prev_a = print_line(cur_prev_a, 'a');
 		else if (print_rev)
-			printf("                   ");
+			ft_printf("                   ");
 		if (cur_prev_b && print_rev)
 			cur_prev_b = print_line(cur_prev_b, 'b');
 		i++;
 	}
-	printf("\n\n");
+	ft_printf("\n\n");
 }
 
-void	print_stack(t_list **a, t_list **b, t_list *cur_a, t_list *cur_b)
+void	print_stack(t_list **a, t_list **b)
 {
 	auto t_list * cur_prev_a = NULL, *cur_prev_b = NULL;
+	auto t_list * cur_a = NULL, *cur_b = NULL;
 	if (a && *a)
 	{
 		cur_a = *a;
@@ -86,7 +84,7 @@ void	view_tests(t_list **a, t_list **b, char c)
 {
 	if (c == 'i')
 	{
-		print_stack(a, b, NULL, NULL);
+		print_stack(a, b);
 		if (is_not_sorted(*a) && *a)
 			ft_printf("\nNOT sorted....\n");
 		else if (is_not_sorted(*a) == 0 && *a)
@@ -104,8 +102,7 @@ void	view_tests(t_list **a, t_list **b, char c)
 	else
 	{
 		ft_printf("\nfinal result:\n");
-		print_stack(a, b, NULL, NULL);
-		free_stack(a);
+		print_stack(a, b);
 		ft_printf("________________________________________________\n");
 	}
 }

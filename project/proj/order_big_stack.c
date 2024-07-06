@@ -6,52 +6,11 @@
 /*   By: isilva-t <isilva-t@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:31:20 by isilva-t          #+#    #+#             */
-/*   Updated: 2024/07/02 17:50:48 by isilva-t         ###   ########.fr       */
+/*   Updated: 2024/07/06 11:00:00 by isilva-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	ft_utoabit_stack(t_list *stack)
-{
-	long	i;
-	long	rest;
-	long	nbr;
-
-	if (!stack)
-		return ;
-	while (stack)
-	{
-		nbr = stack->index_a;
-		i = 0;
-		while (i < 32)
-			stack->arraybit[i++] = '0';
-		while (--i >= 0 && nbr != 0)
-		{
-			rest = nbr;
-			nbr = nbr / 2;
-			stack->arraybit[i] = rest % 2 + '0';
-		}
-		stack->arraybit[32] = 0;
-		stack = stack->next;
-	}
-}
-
-static int	how_much_bit(t_list *stack, int position, char bit)
-{
-	int	n_bits;
-
-	n_bits = 0;
-	if (!stack)
-		return (0);
-	while (stack)
-	{
-		if (stack->arraybit[position] == bit)
-			n_bits++;
-		stack = stack->next;
-	}
-	return (n_bits);
-}
 
 static int	bit_sequence_ok(t_list *stack, int i, char stack_name)
 {
@@ -157,3 +116,6 @@ void	order_radix(t_list **a, t_list **b, t_list *last_wanted_a, int i)
 		pa(a, b);
 	free_stack(a);
 }
+
+//print_stack(a, b);
+//UNCOMMENT 
