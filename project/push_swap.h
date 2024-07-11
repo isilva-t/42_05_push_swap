@@ -90,7 +90,7 @@ t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 
 // outside subject requirements, only for my testing
-// uncomment to include "test" folder, and use this function
+// uncomment to include "test" folder, and use this function (if test folder exists)
 // ONLY WORKS ON "order_big_stack" to see binnary order with radix algorithm
 //void	print_stack(t_list **a, t_list **b);
 
